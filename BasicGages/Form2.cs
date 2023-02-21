@@ -21,15 +21,13 @@ namespace BasicGages
         private void button1_Click(object sender, EventArgs e)
         {
             GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value.Date, dueDateDTP.Value.Date, currentLocTxt.Text, storageLocTxt.Text, activeTxt.Text);
-            
             Form2.ActiveForm.Close();
             
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show(lastCalDTP.Value.ToString());
-            //dueDateDTP.Value = lastCalDTP.ValueConvert.ToDateTime(30);
+
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)

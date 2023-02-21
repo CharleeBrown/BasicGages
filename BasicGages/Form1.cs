@@ -23,7 +23,6 @@ namespace BasicGages
             listView1.View = View.Details;
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             GetData.LoadDataIntoListView(listView1);
-
         }
 
         private void listView1_Click(object sender, EventArgs e)
@@ -34,7 +33,6 @@ namespace BasicGages
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
       
         public void DataObject()
@@ -46,7 +44,6 @@ namespace BasicGages
         private void button1_Click(object sender, EventArgs e)
         {
             DataObject();
-
         }
     }
 }

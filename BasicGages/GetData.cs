@@ -11,32 +11,6 @@ namespace BasicGages
     internal class GetData
     {
 
-        public static List<string> PullData()
-        {
-            List<string> results = new List<string>();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
-          
-            SqlCommand comms = new SqlCommand("SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, isActive FROM GageTable");
-            using (conn)
-            {
-                conn.Open();
-                comms.Connection = conn;
-                SqlDataReader reader = comms.ExecuteReader();
-                
-                while (reader.Read())
-                {
-                    for(var i=0; i<reader.FieldCount; i++)
-                    {
-                        results.Add(reader[i].ToString()); 
-                    }
-                  
-                }
-
-                
-            }
-            conn.Close();
-            return results;
-        }
 
         public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string active)
         {
