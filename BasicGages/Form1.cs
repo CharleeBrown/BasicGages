@@ -9,11 +9,8 @@ namespace BasicGages
         {
             InitializeComponent();
             
-        
             listView1.FullRowSelect = true;
-
-            
-         
+                              
             listView1.Columns.Add("Gage Number");
             listView1.Columns.Add("Gage Type");
             listView1.Columns.Add("Status");
@@ -24,37 +21,25 @@ namespace BasicGages
             listView1.Columns.Add("Is it Active?");
 
             listView1.View = View.Details;
-            foreach (ColumnHeader header in listView1.Columns)
-            {
-                header.Width = -1; // -2 means "auto-size to contents"
-            }
-            
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             GetData.LoadDataIntoListView(listView1);
 
         }
 
         private void listView1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(listView1.SelectedItems[0].SubItems[2].Text);
+            MessageBox.Show(listView1.SelectedItems[0].SubItems[2].Text);
 
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /* Form2.ActiveForm.Show();*/
+
         }
       
         public void DataObject()
         {
-            /*string chars = test[0];
-            Label lbl = new Label()
-            {
-                Text = chars,
-                Location = new Point(30, 40)
-            };
-*/
             Form2 form= new Form2();
-            /*form.Controls.Add(lbl);*/
             form.Show();
         }
 

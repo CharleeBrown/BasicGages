@@ -78,12 +78,13 @@ namespace BasicGages
                     {
                         // Create a new ListViewItem to hold the row data
                         ListViewItem item = new ListViewItem(reader["GageNum"].ToString());
-
+                        DateTime timerOne = Convert.ToDateTime(reader["lastCal"]);
+                        DateTime timerTwo = Convert.ToDateTime(reader["CalDueDate"]);
                         // Add the remaining columns to the ListViewItem
                         item.SubItems.Add(reader["GageType"].ToString());
                         item.SubItems.Add(reader["Status"].ToString());
-                        item.SubItems.Add(reader["LastCal"].ToString());
-                        item.SubItems.Add(reader["CalDueDate"].ToString());
+                        item.SubItems.Add(timerOne.ToShortDateString());
+                        item.SubItems.Add(timerTwo.ToShortDateString());
                         item.SubItems.Add(reader["CurrentLoc"].ToString());
                         item.SubItems.Add(reader["StorageLoc"].ToString());
                         item.SubItems.Add(reader["isActive"].ToString());
@@ -93,8 +94,19 @@ namespace BasicGages
                     }
                 }
             }
+
         }
 
+    }
+    public class MyClass
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Name: {0}, Value: {1:N2}", Name, Value);
+        }
     }
 
 }
