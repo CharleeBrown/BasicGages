@@ -15,12 +15,15 @@ namespace BasicGages
         public Form2()
         {
             InitializeComponent();
-      
+            gageNumTxt.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value, dueDateDTP.Value, currentLocTxt.Text, storageLocTxt.Text, activeTxt.Text);
+            GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value.Date, dueDateDTP.Value.Date, currentLocTxt.Text, storageLocTxt.Text, activeTxt.Text);
+            
+            Form2.ActiveForm.Close();
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

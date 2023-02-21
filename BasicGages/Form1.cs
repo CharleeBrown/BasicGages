@@ -9,20 +9,28 @@ namespace BasicGages
         {
             InitializeComponent();
             
-            ListViewItem main = new ListViewItem("Cheese");
+        
             listView1.FullRowSelect = true;
-           
+
             
-            main.SubItems.Add("News");
-            main.SubItems.Add("Cook");
-            listView1.Items.Add(main);
-            listView1.Columns.Add("Title");
-            listView1.Columns.Add("Title");
-            listView1.Columns.Add("Title");
+         
+            listView1.Columns.Add("Gage Number");
+            listView1.Columns.Add("Gage Type");
+            listView1.Columns.Add("Status");
+            listView1.Columns.Add("Last Calibration Date");
+            listView1.Columns.Add("Calibration Due Date");
+            listView1.Columns.Add("Current Location");
+            listView1.Columns.Add("Storage Location");
+            listView1.Columns.Add("Is it Active?");
 
             listView1.View = View.Details;
+            foreach (ColumnHeader header in listView1.Columns)
+            {
+                header.Width = -1; // -2 means "auto-size to contents"
+            }
             
-          
+            GetData.LoadDataIntoListView(listView1);
+
         }
 
         private void listView1_Click(object sender, EventArgs e)

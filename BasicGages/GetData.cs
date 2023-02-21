@@ -13,9 +13,10 @@ namespace BasicGages
 
         public static List<string> PullData()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
             List<string> results = new List<string>();
-            SqlCommand comms = new SqlCommand("SELECT GageNum, GageType, Status, LastCal, CalDueDate FROM GageTable");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
+          
+            SqlCommand comms = new SqlCommand("SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, isActive FROM GageTable");
             using (conn)
             {
                 conn.Open();
@@ -56,6 +57,44 @@ namespace BasicGages
             MessageBox.Show("Data Saved");
 
         }
+        public static void LoadDataIntoListView(ListView listView)
+        {
+            // Clear any existing items in the ListView
+            listView.Items.Clear();
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
+
+            SqlCommand comms = new SqlCommand();
+            using (conn)
+            {
+                conn.Open();
+                comms.Connection = conn;
+                comms.CommandText = "SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, isActive FROM GageTable";
+
+                // Execute the SQL command and retrieve the data
+                using (SqlDataReader reader = comms.ExecuteReader())
+                {
+                    // Loop through each row in the result set
+                    while (reader.Read())
+                    {
+                        // Create a new ListViewItem to hold the row data
+                        ListViewItem item = new ListViewItem(reader["GageNum"].ToString());
+
+                        // Add the remaining columns to the ListViewItem
+                        item.SubItems.Add(reader["GageType"].ToString());
+                        item.SubItems.Add(reader["Status"].ToString());
+                        item.SubItems.Add(reader["LastCal"].ToString());
+                        item.SubItems.Add(reader["CalDueDate"].ToString());
+                        item.SubItems.Add(reader["CurrentLoc"].ToString());
+                        item.SubItems.Add(reader["StorageLoc"].ToString());
+                        item.SubItems.Add(reader["isActive"].ToString());
+
+                        // Add the ListViewItem to the ListView
+                        listView.Items.Add(item);
+                    }
+                }
+            }
+        }
+
     }
 
 }

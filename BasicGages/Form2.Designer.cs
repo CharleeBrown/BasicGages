@@ -55,15 +55,15 @@
             this.storageLocTxt.Location = new System.Drawing.Point(70, 248);
             this.storageLocTxt.Name = "storageLocTxt";
             this.storageLocTxt.Size = new System.Drawing.Size(141, 27);
-            this.storageLocTxt.TabIndex = 0;
+            this.storageLocTxt.TabIndex = 8;
             // 
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(259, 303);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(102, 32);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "button1";
+            this.saveButton.Size = new System.Drawing.Size(135, 32);
+            this.saveButton.TabIndex = 10;
+            this.saveButton.Text = "Add new Gage";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -73,7 +73,7 @@
             this.gageNumTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gageNumTxt.Name = "gageNumTxt";
             this.gageNumTxt.Size = new System.Drawing.Size(141, 27);
-            this.gageNumTxt.TabIndex = 2;
+            this.gageNumTxt.TabIndex = 1;
             // 
             // gageTypeTxt
             // 
@@ -81,7 +81,7 @@
             this.gageTypeTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gageTypeTxt.Name = "gageTypeTxt";
             this.gageTypeTxt.Size = new System.Drawing.Size(141, 27);
-            this.gageTypeTxt.TabIndex = 3;
+            this.gageTypeTxt.TabIndex = 2;
             // 
             // statusTxt
             // 
@@ -89,7 +89,7 @@
             this.statusTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.statusTxt.Name = "statusTxt";
             this.statusTxt.Size = new System.Drawing.Size(141, 27);
-            this.statusTxt.TabIndex = 8;
+            this.statusTxt.TabIndex = 3;
             // 
             // activeTxt
             // 
@@ -97,14 +97,14 @@
             this.activeTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.activeTxt.Name = "activeTxt";
             this.activeTxt.Size = new System.Drawing.Size(141, 27);
-            this.activeTxt.TabIndex = 7;
+            this.activeTxt.TabIndex = 9;
             // 
             // currentLocTxt
             // 
             this.currentLocTxt.Location = new System.Drawing.Point(450, 248);
             this.currentLocTxt.Name = "currentLocTxt";
             this.currentLocTxt.Size = new System.Drawing.Size(141, 27);
-            this.currentLocTxt.TabIndex = 5;
+            this.currentLocTxt.TabIndex = 10;
             // 
             // label2
             // 
@@ -127,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(450, 120);
+            this.label4.Location = new System.Drawing.Point(442, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 20);
             this.label4.TabIndex = 11;
@@ -181,29 +181,30 @@
             // lastCalDTP
             // 
             this.lastCalDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.lastCalDTP.Location = new System.Drawing.Point(70, 144);
+            this.lastCalDTP.Location = new System.Drawing.Point(70, 142);
             this.lastCalDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lastCalDTP.Name = "lastCalDTP";
             this.lastCalDTP.Size = new System.Drawing.Size(141, 27);
-            this.lastCalDTP.TabIndex = 19;
+            this.lastCalDTP.TabIndex = 4;
             this.lastCalDTP.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dueDateDTP
             // 
             this.dueDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dueDateDTP.Location = new System.Drawing.Point(450, 149);
+            this.dueDateDTP.Location = new System.Drawing.Point(450, 142);
             this.dueDateDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dueDateDTP.Name = "dueDateDTP";
             this.dueDateDTP.Size = new System.Drawing.Size(141, 27);
-            this.dueDateDTP.TabIndex = 20;
+            this.dueDateDTP.TabIndex = 7;
             // 
             // interValue
             // 
-            this.interValue.Location = new System.Drawing.Point(259, 144);
+            this.interValue.Location = new System.Drawing.Point(259, 142);
             this.interValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.interValue.MaxLength = 2;
             this.interValue.Name = "interValue";
             this.interValue.Size = new System.Drawing.Size(26, 27);
-            this.interValue.TabIndex = 21;
+            this.interValue.TabIndex = 5;
             // 
             // label10
             // 
@@ -222,11 +223,11 @@
             "Month",
             "Week",
             "Year"});
-            this.comboBox1.Location = new System.Drawing.Point(293, 144);
+            this.comboBox1.Location = new System.Drawing.Point(292, 141);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(108, 28);
-            this.comboBox1.TabIndex = 23;
+            this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // Form2
