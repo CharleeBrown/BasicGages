@@ -1,0 +1,51 @@
+﻿Necessary parts:
+Login
+Gage #
+Gage Type
+Status (Available, Out, Reference Only)
+Last cal Date
+Cal due date
+Current Location
+Storage Location
+Active
+
+Advanced parts:
+Filters
+Reports
+Labels
+Views
+Columns
+
+Gage card necessities:
+Gage Type (dropdown)
+Gage Description (dropdown)
+Division (drop down)
+Gage Size (text)
+Status (dropdown)
+Employee name/clock # (dropdown)
+Gage size min/max (text)
+Current Location (Dropdown)
+Machine number (text)
+Units of Measure (Dropdown)
+Storage Location (dropdown)
+Resolution (text)
+Friendly warning (text)
+email to (dropdown)
+
+		History|
+				Event Type|Entered By| Event Date
+			   "Check Out"| C.Hallom |  1/1/23
+
+		Calibration
+			Due Date Intervals
+					Method (dropdown)
+					Time(text & dropdown) 
+					Uses (text)
+					[Remove Date Button]
+					Calibration Due date (Auto)
+					Days remaining (auto)
+					Uses remaining (none)
+					Last Calibratin date (auto)
+
+			Calibration Procedure (text area to the right of Due date Intervals)
+			Calibration File name (optional)
