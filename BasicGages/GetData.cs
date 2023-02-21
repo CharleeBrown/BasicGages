@@ -14,7 +14,7 @@ namespace BasicGages
 
         public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string active)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"//");
 
 
 
@@ -35,7 +35,7 @@ namespace BasicGages
         {
             // Clear any existing items in the ListView
             listView.Items.Clear();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hallocol\source\repos\BasicGages\BasicGages\GageDB.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"//");
 
             SqlCommand comms = new SqlCommand();
             using (conn)
