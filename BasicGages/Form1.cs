@@ -1,5 +1,6 @@
 using static System.Net.Mime.MediaTypeNames;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace BasicGages
 {
@@ -8,7 +9,13 @@ namespace BasicGages
         public Form1()
         {
             InitializeComponent();
-            
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            ConfigurationSection section = config.GetSection("connectionStrings");
+            if (!section.SectionInformation.IsProtected)
+            {
+                section.SectionInformation.ProtectSection("DataProtectionConfigurationProvider");
+                config.Save();
+            }
             listView1.FullRowSelect = true;
                               
             listView1.Columns.Add("Gage Number");

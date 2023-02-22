@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using BasicGages.Properties;
+using System.Configuration;
 
 namespace BasicGages
 {
@@ -14,7 +16,9 @@ namespace BasicGages
 
         public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string active)
         {
-            SqlConnection conn = new SqlConnection(@"//");
+            Resources res = new Resources();
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connectionString);
 
 
 
@@ -35,8 +39,8 @@ namespace BasicGages
         {
             // Clear any existing items in the ListView
             listView.Items.Clear();
-            SqlConnection conn = new SqlConnection(@"//");
-
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand comms = new SqlCommand();
             using (conn)
             {
