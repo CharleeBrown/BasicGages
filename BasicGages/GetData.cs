@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
-using BasicGages.Properties;
+﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
 
 namespace BasicGages
@@ -16,28 +9,62 @@ namespace BasicGages
 
         public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string active)
         {
-            Resources res = new Resources();
+            // Retrieving the connection string.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
 
-
-
+            //  DateTime myDateTime = DateTime.Now;
+ /*           string lastCalFormatted = lastCal.ToString("MM-dd-yyyy");
+            string dueDateFormatted = dueDate.ToString("MM-dd-yyyy");*/
+            // Setup for the SQL Commands
             SqlCommand comms = new SqlCommand();
             comms.Connection = conn;
-            comms.CommandText = $"INSERT INTO  GageTable VALUES ('{GageNum}', '{GageType}', '{status}', '{lastCal.Date}', '{dueDate.Date}','{currentLocation}', '{storageLocation}', '{active}')";
+
+            comms.Parameters.AddWithValue("@GageNum", GageNum);
+            comms.Parameters.AddWithValue("@GageType", GageType);
+            comms.Parameters.AddWithValue("@status", status);
+            comms.Parameters.AddWithValue("@lastCal", lastCal.ToShortDateString());
+            comms.Parameters.AddWithValue("@dueDate", dueDate.ToShortDateString());
+            comms.Parameters.AddWithValue("@currentLocation", currentLocation);
+            comms.Parameters.AddWithValue("@storageLocation", storageLocation);
+            comms.Parameters.AddWithValue("@active", active);
+
+            comms.CommandText = "INSERT INTO GageTable VALUES (@GageNum, @GageType, @status, @lastCal, @dueDate, @currentLocation, @storageLocation, @active)";
+
+
             using (conn)
             {
                 conn.Open();
-           
-                comms.ExecuteNonQuery();                 
+                try
+                {
+                    // Opening the connection and executing the query with the connection.
+
+
+                    comms.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+
+                    // Writing any errors to the console and rolling back the transaction.
+                    MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
+                }
+                finally
+                {
+                    // Committing the query and notifying the user.
+
+                    MessageBox.Show("Data Saved");
+                }
+
+                // Closing the connection.
+                conn.Close();
             }
-            conn.Close();
-            MessageBox.Show("Data Saved");
+
 
         }
         public static void LoadDataIntoListView(ListView listView)
         {
             // Clear any existing items in the ListView
+            listView.BeginUpdate();
             listView.Items.Clear();
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
@@ -68,23 +95,21 @@ namespace BasicGages
                         item.SubItems.Add(reader["isActive"].ToString());
 
                         // Add the ListViewItem to the ListView
+                        
                         listView.Items.Add(item);
+
                     }
+
                 }
+
             }
+            listView.EndUpdate();
+            listView.Refresh();
 
         }
 
-    }
-    public class MyClass
-    {
-        public string Name { get; set; }
-        public int Value { get; set; }
 
-        public override string ToString()
-        {
-            return String.Format("Name: {0}, Value: {1:N2}", Name, Value);
-        }
     }
+
 
 }

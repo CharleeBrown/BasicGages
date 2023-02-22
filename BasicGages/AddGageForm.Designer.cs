@@ -1,6 +1,6 @@
 ﻿namespace BasicGages
 {
-    partial class Form2
+    partial class AddGageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -256,7 +256,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.storageLocTxt);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "New Gage";
             this.ResumeLayout(false);
             this.PerformLayout();
 
