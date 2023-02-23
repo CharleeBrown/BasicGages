@@ -31,6 +31,8 @@ namespace BasicGages
             listView1.Columns.Add("Calibration Due Date");
             listView1.Columns.Add("Current Location");
             listView1.Columns.Add("Storage Location");
+            listView1.Columns.Add("Interval Type");
+            listView1.Columns.Add("Interval Amount");
             listView1.Columns.Add("Is it Active?");
 
             listView1.View = View.Details;
@@ -75,19 +77,24 @@ namespace BasicGages
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
             ContextMenuStrip menu = new ContextMenuStrip();
-            menu.Items.Add("Edit");
+            ToolStripMenuItem View = new ToolStripMenuItem();
+            ToolStripMenuItem Edit = new ToolStripMenuItem();
+            ToolStripMenuItem Delete = new ToolStripMenuItem();
 
+            View.Text = "View";
+            Edit.Text = "Edit";
+            Delete.Text = "Delete";
+
+
+
+            menu.Items.Add("View");
+            menu.Items.Add("Edit");
+            menu.Items.Add("Delete");
+            
 
             if (e.Button == MouseButtons.Right)
             {
-                var focusedItem = listView1.FocusedItem;
-                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
-                {
-                    menu.Show(Cursor.Position);
-                }
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
+                //if(menu.)
                 var clickedItem = listView1.SelectedItems[0];
 
                 // Retrieve the gage information from the clicked item
@@ -98,19 +105,29 @@ namespace BasicGages
                 DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
                 string currentLoc = clickedItem.SubItems[5].Text;
                 string storageLoc = clickedItem.SubItems[6].Text;
-                string active = clickedItem.SubItems[7].Text;
+                string intervalAmt = clickedItem.SubItems[7].Text;
+                string intervalType = clickedItem.SubItems[8].Text;
+                string active = clickedItem.SubItems[9].Text;
 
                 // Create a new instance of the GageDetailsForm and pass the gage information
-                var gageDetailsForm = new ReviewGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc, active);
+                var gageDetailsForm = new ReviewGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc,intervalType, intervalAmt, active);
                 gageDetailsForm.Text = gageNumber + " - " + gageType;
                 // Display the GageDetailsForm
                 gageDetailsForm.ShowDialog();
+       
+               
             }
-     
+            else if (e.Button == MouseButtons.Left)
+            {
+                var focusedItem = listView1.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+                    menu.Show(Cursor.Position);
+                }
+            }
 
-        private void delGageBtn_Click(object sender, EventArgs e)
-        {
-         //   listView1.SelectedItems[0].SubItems[1];
+
+                
         }
     }
     }

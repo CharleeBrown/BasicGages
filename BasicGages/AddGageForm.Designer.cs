@@ -45,9 +45,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lastCalDTP = new System.Windows.Forms.DateTimePicker();
             this.dueDateDTP = new System.Windows.Forms.DateTimePicker();
-            this.interValue = new System.Windows.Forms.TextBox();
+            this.intervalAmt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.intervalType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // storageLocTxt
@@ -197,14 +197,14 @@
             this.dueDateDTP.Size = new System.Drawing.Size(141, 27);
             this.dueDateDTP.TabIndex = 7;
             // 
-            // interValue
+            // intervalAmt
             // 
-            this.interValue.Location = new System.Drawing.Point(259, 142);
-            this.interValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.interValue.MaxLength = 2;
-            this.interValue.Name = "interValue";
-            this.interValue.Size = new System.Drawing.Size(26, 27);
-            this.interValue.TabIndex = 5;
+            this.intervalAmt.Location = new System.Drawing.Point(259, 142);
+            this.intervalAmt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalAmt.MaxLength = 2;
+            this.intervalAmt.Name = "intervalAmt";
+            this.intervalAmt.Size = new System.Drawing.Size(26, 27);
+            this.intervalAmt.TabIndex = 5;
             // 
             // label10
             // 
@@ -215,29 +215,29 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Calibration Interval";
             // 
-            // comboBox1
+            // intervalType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.intervalType.FormattingEnabled = true;
+            this.intervalType.Items.AddRange(new object[] {
             "Day",
             "Month",
             "Week",
             "Year"});
-            this.comboBox1.Location = new System.Drawing.Point(292, 141);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(108, 28);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            this.intervalType.Location = new System.Drawing.Point(292, 141);
+            this.intervalType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalType.Name = "intervalType";
+            this.intervalType.Size = new System.Drawing.Size(108, 28);
+            this.intervalType.TabIndex = 6;
+            this.intervalType.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // AddGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 355);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.intervalType);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.interValue);
+            this.Controls.Add(this.intervalAmt);
             this.Controls.Add(this.dueDateDTP);
             this.Controls.Add(this.lastCalDTP);
             this.Controls.Add(this.label9);
@@ -282,8 +282,8 @@
         private Label label9;
         private DateTimePicker lastCalDTP;
         private DateTimePicker dueDateDTP;
-        private TextBox interValue;
+        private TextBox intervalAmt;
         private Label label10;
-        private ComboBox comboBox1;
+        private ComboBox intervalType;
     }
 }

@@ -44,12 +44,15 @@
             this.gageTypeViewTxt = new System.Windows.Forms.TextBox();
             this.gageNumViewTxt = new System.Windows.Forms.TextBox();
             this.storageLocViewTxt = new System.Windows.Forms.TextBox();
+            this.intervalTypeViewTxt = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.intervalAmtViewTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dueDateDTPView
             // 
             this.dueDateDTPView.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dueDateDTPView.Location = new System.Drawing.Point(236, 142);
+            this.dueDateDTPView.Location = new System.Drawing.Point(450, 142);
             this.dueDateDTPView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dueDateDTPView.Name = "dueDateDTPView";
             this.dueDateDTPView.Size = new System.Drawing.Size(141, 27);
@@ -112,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(228, 120);
+            this.label4.Location = new System.Drawing.Point(442, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 20);
             this.label4.TabIndex = 36;
@@ -182,11 +185,46 @@
             this.storageLocViewTxt.Size = new System.Drawing.Size(141, 27);
             this.storageLocViewTxt.TabIndex = 30;
             // 
-            // Form3
+            // intervalTypeViewTxt
+            // 
+            this.intervalTypeViewTxt.FormattingEnabled = true;
+            this.intervalTypeViewTxt.Items.AddRange(new object[] {
+            "Day",
+            "Month",
+            "Week",
+            "Year"});
+            this.intervalTypeViewTxt.Location = new System.Drawing.Point(274, 142);
+            this.intervalTypeViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalTypeViewTxt.Name = "intervalTypeViewTxt";
+            this.intervalTypeViewTxt.Size = new System.Drawing.Size(108, 28);
+            this.intervalTypeViewTxt.TabIndex = 43;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(241, 121);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(135, 20);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "Calibration Interval";
+            // 
+            // intervalAmtViewTxt
+            // 
+            this.intervalAmtViewTxt.Location = new System.Drawing.Point(241, 143);
+            this.intervalAmtViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalAmtViewTxt.MaxLength = 2;
+            this.intervalAmtViewTxt.Name = "intervalAmtViewTxt";
+            this.intervalAmtViewTxt.Size = new System.Drawing.Size(26, 27);
+            this.intervalAmtViewTxt.TabIndex = 42;
+            // 
+            // ReviewGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 293);
+            this.ClientSize = new System.Drawing.Size(622, 290);
+            this.Controls.Add(this.intervalTypeViewTxt);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.intervalAmtViewTxt);
             this.Controls.Add(this.dueDateDTPView);
             this.Controls.Add(this.lastCalDTPView);
             this.Controls.Add(this.label9);
@@ -203,7 +241,7 @@
             this.Controls.Add(this.gageTypeViewTxt);
             this.Controls.Add(this.gageNumViewTxt);
             this.Controls.Add(this.storageLocViewTxt);
-            this.Name = "Form3";
+            this.Name = "ReviewGageForm";
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,5 +266,8 @@
         private TextBox gageTypeViewTxt;
         private TextBox gageNumViewTxt;
         public TextBox storageLocViewTxt;
+        private ComboBox intervalTypeViewTxt;
+        private Label label10;
+        private TextBox intervalAmtViewTxt;
     }
 }

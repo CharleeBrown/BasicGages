@@ -9,10 +9,12 @@
         private DateTime dueDate;
         private string currentLoc;
         private string storageLoc;
+        private string intervalType;
+        private string intervalAmt;
         private string active;
         private int gageSerialNumber;
 
-        public ReviewGageForm(string gageNumber, string gageType, string gageStatus, DateTime lastCal, DateTime dueDate, string currentLoc, string storageLoc, string active)
+        public ReviewGageForm(string gageNumber, string gageType, string gageStatus, DateTime lastCal, DateTime dueDate, string currentLoc, string storageLoc, string intervalType, string intervalAmt, string active)
         {
             InitializeComponent();
             this.gageNum = gageNumber;
@@ -22,6 +24,8 @@
             this.dueDate = dueDate;
             this.currentLoc = currentLoc;
             this.storageLoc = storageLoc;
+            this.intervalType = intervalType;
+            this.intervalAmt = intervalAmt;
             this.active = active;
             DisplayGageInformation();
         }
@@ -35,6 +39,8 @@
             dueDateDTPView.Value = dueDate;
             currentLocViewTxt.Text = currentLoc;
             storageLocViewTxt.Text = storageLoc;
+            intervalTypeViewTxt.Text = intervalType;
+            intervalAmtViewTxt.Text = intervalAmt;
 
             //serialNumberLabel.Text = gageSerialNumber.ToString();
         }

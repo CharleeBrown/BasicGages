@@ -7,7 +7,7 @@ namespace BasicGages
     {
 
 
-        public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string active)
+        public static void SetData(string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string intervalType, string intervalAmt, string active)
         {
             // Retrieving the connection string.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
@@ -27,9 +27,11 @@ namespace BasicGages
             comms.Parameters.AddWithValue("@dueDate", dueDate.ToShortDateString());
             comms.Parameters.AddWithValue("@currentLocation", currentLocation);
             comms.Parameters.AddWithValue("@storageLocation", storageLocation);
+            comms.Parameters.AddWithValue("@intervalType", intervalType);
+            comms.Parameters.AddWithValue("@intervalAmt", intervalAmt);
             comms.Parameters.AddWithValue("@active", active);
 
-            comms.CommandText = "INSERT INTO GageTable VALUES (@GageNum, @GageType, @status, @lastCal, @dueDate, @currentLocation, @storageLocation, @active)";
+            comms.CommandText = "INSERT INTO GageTable VALUES (@GageNum, @GageType, @status, @lastCal, @dueDate, @currentLocation, @storageLocation, @active, @intervalAmt,@intervalType) ";
 
 
             using (conn)
@@ -73,7 +75,7 @@ namespace BasicGages
             {
                 conn.Open();
                 comms.Connection = conn;
-                comms.CommandText = "SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, isActive FROM GageTable";
+                comms.CommandText = "SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, IntervalAmt, IntervalType, isActive FROM GageTable";
 
                 // Execute the SQL command and retrieve the data
                 using (SqlDataReader reader = comms.ExecuteReader())
@@ -92,6 +94,8 @@ namespace BasicGages
                         item.SubItems.Add(timerTwo.ToShortDateString());
                         item.SubItems.Add(reader["CurrentLoc"].ToString());
                         item.SubItems.Add(reader["StorageLoc"].ToString());
+                        item.SubItems.Add(reader["intervalType"].ToString());
+                        item.SubItems.Add(reader["intervalAmt"].ToString());
                         item.SubItems.Add(reader["isActive"].ToString());
 
                         // Add the ListViewItem to the ListView
