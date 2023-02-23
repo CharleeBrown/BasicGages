@@ -40,40 +40,40 @@ namespace BasicGages
                 try
                 {
                     // Opening the connection and executing the query with the connection.
-
-
                     comms.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-
                     // Writing any errors to the console and rolling back the transaction.
                     MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
                 }
                 finally
                 {
                     // Committing the query and notifying the user.
-
                     MessageBox.Show("Data Saved");
                 }
-
                 // Closing the connection.
                 conn.Close();
             }
-
-
         }
+
         public static void LoadDataIntoListView(ListView listView)
         {
-            // Clear any existing items in the ListView
+            // Clear any existing items in the ListView and starting update.
             listView.BeginUpdate();
             listView.Items.Clear();
+
+            // Connection informatino for the database.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand comms = new SqlCommand();
+
             using (conn)
             {
+                // Open the connection
                 conn.Open();
+
+                // Setting up the commands
                 comms.Connection = conn;
                 comms.CommandText = "SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, IntervalAmt, IntervalType, isActive FROM GageTable";
 
@@ -107,12 +107,62 @@ namespace BasicGages
                 }
 
             }
+
+            // Finishing the ListView Update.
             listView.EndUpdate();
             listView.Refresh();
 
         }
 
+        public static void UpdateData(int ID, string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string intervalType, string intervalAmt, string active)
+        {
+            // Retrieving the connection string.
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(connectionString);
 
+            //  DateTime myDateTime = DateTime.Now;
+            /*           string lastCalFormatted = lastCal.ToString("MM-dd-yyyy");
+                       string dueDateFormatted = dueDate.ToString("MM-dd-yyyy");*/
+            // Setup for the SQL Commands
+            SqlCommand comms = new SqlCommand();
+            comms.Connection = conn;
+
+            comms.Parameters.AddWithValue("@GageNum", GageNum);
+            comms.Parameters.AddWithValue("@GageType", GageType);
+            comms.Parameters.AddWithValue("@status", status);
+            comms.Parameters.AddWithValue("@lastCal", lastCal.ToShortDateString());
+            comms.Parameters.AddWithValue("@dueDate", dueDate.ToShortDateString());
+            comms.Parameters.AddWithValue("@currentLocation", currentLocation);
+            comms.Parameters.AddWithValue("@storageLocation", storageLocation);
+            comms.Parameters.AddWithValue("@intervalType", intervalType);
+            comms.Parameters.AddWithValue("@intervalAmt", intervalAmt);
+            comms.Parameters.AddWithValue("@active", active);
+
+            comms.CommandText = "UPDATE GageTable ) ";
+
+
+            using (conn)
+            {
+                conn.Open();
+                try
+                {
+                    // Opening the connection and executing the query with the connection.
+                    comms.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Writing any errors to the console and rolling back the transaction.
+                    MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
+                }
+                finally
+                {
+                    // Committing the query and notifying the user.
+                    MessageBox.Show("Data Saved");
+                }
+                // Closing the connection.
+                conn.Close();
+            }
+        }
     }
 
 

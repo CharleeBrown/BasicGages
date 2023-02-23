@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.intervalTypeEdit = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.interValue = new System.Windows.Forms.TextBox();
-            this.dueDateDTP = new System.Windows.Forms.DateTimePicker();
-            this.lastCalDTP = new System.Windows.Forms.DateTimePicker();
+            this.intervalEdit = new System.Windows.Forms.TextBox();
+            this.dueDateDTP_Edit = new System.Windows.Forms.DateTimePicker();
+            this.lastCalDTP_Edit = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -41,28 +41,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.statusTxt = new System.Windows.Forms.TextBox();
-            this.activeTxt = new System.Windows.Forms.TextBox();
-            this.currentLocTxt = new System.Windows.Forms.TextBox();
-            this.gageTypeTxt = new System.Windows.Forms.TextBox();
-            this.gageNumTxt = new System.Windows.Forms.TextBox();
+            this.statusEdit = new System.Windows.Forms.TextBox();
+            this.activeEdit = new System.Windows.Forms.TextBox();
+            this.currentLocEdit = new System.Windows.Forms.TextBox();
+            this.gageTypeEdit = new System.Windows.Forms.TextBox();
+            this.gageNumEdit = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.storageLocTxt = new System.Windows.Forms.TextBox();
+            this.storageLocEdit = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // intervalTypeEdit
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.intervalTypeEdit.FormattingEnabled = true;
+            this.intervalTypeEdit.Items.AddRange(new object[] {
             "Day",
             "Month",
             "Week",
             "Year"});
-            this.comboBox1.Location = new System.Drawing.Point(261, 145);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(108, 28);
-            this.comboBox1.TabIndex = 28;
+            this.intervalTypeEdit.Location = new System.Drawing.Point(261, 145);
+            this.intervalTypeEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalTypeEdit.Name = "intervalTypeEdit";
+            this.intervalTypeEdit.Size = new System.Drawing.Size(108, 28);
+            this.intervalTypeEdit.TabIndex = 28;
             // 
             // label10
             // 
@@ -73,32 +73,32 @@
             this.label10.TabIndex = 42;
             this.label10.Text = "Calibration Interval";
             // 
-            // interValue
+            // intervalEdit
             // 
-            this.interValue.Location = new System.Drawing.Point(228, 146);
-            this.interValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.interValue.MaxLength = 2;
-            this.interValue.Name = "interValue";
-            this.interValue.Size = new System.Drawing.Size(26, 27);
-            this.interValue.TabIndex = 27;
+            this.intervalEdit.Location = new System.Drawing.Point(228, 146);
+            this.intervalEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.intervalEdit.MaxLength = 2;
+            this.intervalEdit.Name = "intervalEdit";
+            this.intervalEdit.Size = new System.Drawing.Size(26, 27);
+            this.intervalEdit.TabIndex = 27;
             // 
-            // dueDateDTP
+            // dueDateDTP_Edit
             // 
-            this.dueDateDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dueDateDTP.Location = new System.Drawing.Point(419, 146);
-            this.dueDateDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dueDateDTP.Name = "dueDateDTP";
-            this.dueDateDTP.Size = new System.Drawing.Size(141, 27);
-            this.dueDateDTP.TabIndex = 29;
+            this.dueDateDTP_Edit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dueDateDTP_Edit.Location = new System.Drawing.Point(419, 146);
+            this.dueDateDTP_Edit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dueDateDTP_Edit.Name = "dueDateDTP_Edit";
+            this.dueDateDTP_Edit.Size = new System.Drawing.Size(141, 27);
+            this.dueDateDTP_Edit.TabIndex = 29;
             // 
-            // lastCalDTP
+            // lastCalDTP_Edit
             // 
-            this.lastCalDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.lastCalDTP.Location = new System.Drawing.Point(39, 146);
-            this.lastCalDTP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lastCalDTP.Name = "lastCalDTP";
-            this.lastCalDTP.Size = new System.Drawing.Size(141, 27);
-            this.lastCalDTP.TabIndex = 26;
+            this.lastCalDTP_Edit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.lastCalDTP_Edit.Location = new System.Drawing.Point(39, 146);
+            this.lastCalDTP_Edit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lastCalDTP_Edit.Name = "lastCalDTP_Edit";
+            this.lastCalDTP_Edit.Size = new System.Drawing.Size(141, 27);
+            this.lastCalDTP_Edit.TabIndex = 26;
             // 
             // label9
             // 
@@ -172,44 +172,44 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "Gage Number";
             // 
-            // statusTxt
+            // statusEdit
             // 
-            this.statusTxt.Location = new System.Drawing.Point(419, 56);
-            this.statusTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.statusTxt.Name = "statusTxt";
-            this.statusTxt.Size = new System.Drawing.Size(141, 27);
-            this.statusTxt.TabIndex = 25;
+            this.statusEdit.Location = new System.Drawing.Point(419, 56);
+            this.statusEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.statusEdit.Name = "statusEdit";
+            this.statusEdit.Size = new System.Drawing.Size(141, 27);
+            this.statusEdit.TabIndex = 25;
             // 
-            // activeTxt
+            // activeEdit
             // 
-            this.activeTxt.Location = new System.Drawing.Point(228, 252);
-            this.activeTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.activeTxt.Name = "activeTxt";
-            this.activeTxt.Size = new System.Drawing.Size(141, 27);
-            this.activeTxt.TabIndex = 32;
+            this.activeEdit.Location = new System.Drawing.Point(228, 252);
+            this.activeEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.activeEdit.Name = "activeEdit";
+            this.activeEdit.Size = new System.Drawing.Size(141, 27);
+            this.activeEdit.TabIndex = 32;
             // 
-            // currentLocTxt
+            // currentLocEdit
             // 
-            this.currentLocTxt.Location = new System.Drawing.Point(419, 252);
-            this.currentLocTxt.Name = "currentLocTxt";
-            this.currentLocTxt.Size = new System.Drawing.Size(141, 27);
-            this.currentLocTxt.TabIndex = 35;
+            this.currentLocEdit.Location = new System.Drawing.Point(419, 252);
+            this.currentLocEdit.Name = "currentLocEdit";
+            this.currentLocEdit.Size = new System.Drawing.Size(141, 27);
+            this.currentLocEdit.TabIndex = 35;
             // 
-            // gageTypeTxt
+            // gageTypeEdit
             // 
-            this.gageTypeTxt.Location = new System.Drawing.Point(228, 56);
-            this.gageTypeTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gageTypeTxt.Name = "gageTypeTxt";
-            this.gageTypeTxt.Size = new System.Drawing.Size(141, 27);
-            this.gageTypeTxt.TabIndex = 24;
+            this.gageTypeEdit.Location = new System.Drawing.Point(228, 56);
+            this.gageTypeEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gageTypeEdit.Name = "gageTypeEdit";
+            this.gageTypeEdit.Size = new System.Drawing.Size(141, 27);
+            this.gageTypeEdit.TabIndex = 24;
             // 
-            // gageNumTxt
+            // gageNumEdit
             // 
-            this.gageNumTxt.Location = new System.Drawing.Point(39, 56);
-            this.gageNumTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gageNumTxt.Name = "gageNumTxt";
-            this.gageNumTxt.Size = new System.Drawing.Size(141, 27);
-            this.gageNumTxt.TabIndex = 23;
+            this.gageNumEdit.Location = new System.Drawing.Point(39, 56);
+            this.gageNumEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gageNumEdit.Name = "gageNumEdit";
+            this.gageNumEdit.Size = new System.Drawing.Size(141, 27);
+            this.gageNumEdit.TabIndex = 23;
             // 
             // saveButton
             // 
@@ -220,23 +220,23 @@
             this.saveButton.Text = "Save Changes";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // storageLocTxt
+            // storageLocEdit
             // 
-            this.storageLocTxt.Location = new System.Drawing.Point(39, 252);
-            this.storageLocTxt.Name = "storageLocTxt";
-            this.storageLocTxt.Size = new System.Drawing.Size(141, 27);
-            this.storageLocTxt.TabIndex = 30;
+            this.storageLocEdit.Location = new System.Drawing.Point(39, 252);
+            this.storageLocEdit.Name = "storageLocEdit";
+            this.storageLocEdit.Size = new System.Drawing.Size(141, 27);
+            this.storageLocEdit.TabIndex = 30;
             // 
             // EditGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 351);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.intervalTypeEdit);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.interValue);
-            this.Controls.Add(this.dueDateDTP);
-            this.Controls.Add(this.lastCalDTP);
+            this.Controls.Add(this.intervalEdit);
+            this.Controls.Add(this.dueDateDTP_Edit);
+            this.Controls.Add(this.lastCalDTP_Edit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -245,15 +245,15 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.statusTxt);
-            this.Controls.Add(this.activeTxt);
-            this.Controls.Add(this.currentLocTxt);
-            this.Controls.Add(this.gageTypeTxt);
-            this.Controls.Add(this.gageNumTxt);
+            this.Controls.Add(this.statusEdit);
+            this.Controls.Add(this.activeEdit);
+            this.Controls.Add(this.currentLocEdit);
+            this.Controls.Add(this.gageTypeEdit);
+            this.Controls.Add(this.gageNumEdit);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.storageLocTxt);
+            this.Controls.Add(this.storageLocEdit);
             this.Name = "EditGageForm";
-            this.Text = "EditGageForm";
+            this.Text = "Edit Gage Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,11 +261,11 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox intervalTypeEdit;
         private Label label10;
-        private TextBox interValue;
-        private DateTimePicker dueDateDTP;
-        private DateTimePicker lastCalDTP;
+        private TextBox intervalEdit;
+        private DateTimePicker dueDateDTP_Edit;
+        private DateTimePicker lastCalDTP_Edit;
         private Label label9;
         private Label label8;
         private Label label7;
@@ -274,12 +274,12 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox statusTxt;
-        private TextBox activeTxt;
-        private TextBox currentLocTxt;
-        private TextBox gageTypeTxt;
-        private TextBox gageNumTxt;
+        private TextBox statusEdit;
+        private TextBox activeEdit;
+        private TextBox currentLocEdit;
+        private TextBox gageTypeEdit;
+        private TextBox gageNumEdit;
         private Button saveButton;
-        public TextBox storageLocTxt;
+        public TextBox storageLocEdit;
     }
 }

@@ -51,6 +51,7 @@
             // 
             // dueDateDTPView
             // 
+            this.dueDateDTPView.Enabled = false;
             this.dueDateDTPView.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dueDateDTPView.Location = new System.Drawing.Point(450, 142);
             this.dueDateDTPView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -60,6 +61,7 @@
             // 
             // lastCalDTPView
             // 
+            this.lastCalDTPView.Enabled = false;
             this.lastCalDTPView.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.lastCalDTPView.Location = new System.Drawing.Point(39, 142);
             this.lastCalDTPView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -141,6 +143,7 @@
             // 
             // statusViewTxt
             // 
+            this.statusViewTxt.Enabled = false;
             this.statusViewTxt.Location = new System.Drawing.Point(450, 49);
             this.statusViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.statusViewTxt.Name = "statusViewTxt";
@@ -149,6 +152,7 @@
             // 
             // activeViewTxt
             // 
+            this.activeViewTxt.Enabled = false;
             this.activeViewTxt.Location = new System.Drawing.Point(236, 250);
             this.activeViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.activeViewTxt.Name = "activeViewTxt";
@@ -157,6 +161,7 @@
             // 
             // currentLocViewTxt
             // 
+            this.currentLocViewTxt.Enabled = false;
             this.currentLocViewTxt.Location = new System.Drawing.Point(420, 250);
             this.currentLocViewTxt.Name = "currentLocViewTxt";
             this.currentLocViewTxt.Size = new System.Drawing.Size(141, 27);
@@ -164,6 +169,7 @@
             // 
             // gageTypeViewTxt
             // 
+            this.gageTypeViewTxt.Enabled = false;
             this.gageTypeViewTxt.Location = new System.Drawing.Point(236, 49);
             this.gageTypeViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gageTypeViewTxt.Name = "gageTypeViewTxt";
@@ -172,6 +178,7 @@
             // 
             // gageNumViewTxt
             // 
+            this.gageNumViewTxt.Enabled = false;
             this.gageNumViewTxt.Location = new System.Drawing.Point(39, 49);
             this.gageNumViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gageNumViewTxt.Name = "gageNumViewTxt";
@@ -180,6 +187,7 @@
             // 
             // storageLocViewTxt
             // 
+            this.storageLocViewTxt.Enabled = false;
             this.storageLocViewTxt.Location = new System.Drawing.Point(39, 250);
             this.storageLocViewTxt.Name = "storageLocViewTxt";
             this.storageLocViewTxt.Size = new System.Drawing.Size(141, 27);
@@ -187,6 +195,7 @@
             // 
             // intervalTypeViewTxt
             // 
+            this.intervalTypeViewTxt.Enabled = false;
             this.intervalTypeViewTxt.FormattingEnabled = true;
             this.intervalTypeViewTxt.Items.AddRange(new object[] {
             "Day",
@@ -210,6 +219,7 @@
             // 
             // intervalAmtViewTxt
             // 
+            this.intervalAmtViewTxt.Enabled = false;
             this.intervalAmtViewTxt.Location = new System.Drawing.Point(241, 143);
             this.intervalAmtViewTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.intervalAmtViewTxt.MaxLength = 2;

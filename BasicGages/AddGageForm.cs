@@ -12,7 +12,7 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+           // Saves the gage data.
             GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value, dueDateDTP.Value, currentLocTxt.Text, storageLocTxt.Text,intervalType.SelectedItem.ToString(), intervalAmt.Text, activeTxt.Text);
             this.Close();
 
@@ -27,6 +27,7 @@
         {
             string info = intervalType.Text;
 
+            // Switch to change the date as the interval is changed.
             switch (info)
             {
                 case "Day":
@@ -47,6 +48,7 @@
 
         private void AddGageForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // The listView in the MainForm should refresh when the AddGage form is closed.
             MainForm form = new MainForm();
             ListView list = form.listView1;
             GetData.LoadDataIntoListView(list);

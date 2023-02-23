@@ -1,5 +1,8 @@
+using Microsoft.VisualBasic;
+using System;
 using System.Configuration;
 using System.Drawing.Text;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace BasicGages
@@ -85,39 +88,14 @@ namespace BasicGages
             Edit.Text = "Edit";
             Delete.Text = "Delete";
 
+            View.Click += View_Click;
+            Edit.Click += Edit_Click;
+            Delete.Click += Delete_Click;
+            ToolStripItem[] items = { View, Edit, Delete };
 
-
-            menu.Items.Add("View");
-            menu.Items.Add("Edit");
-            menu.Items.Add("Delete");
+            menu.Items.AddRange(items);
             
-
-            if (e.Button == MouseButtons.Right)
-            {
-                //if(menu.)
-                var clickedItem = listView1.SelectedItems[0];
-
-                // Retrieve the gage information from the clicked item
-                string gageNumber = clickedItem.Text;
-                string gageType = clickedItem.SubItems[1].Text;
-                string gageStatus = clickedItem.SubItems[2].Text;
-                DateTime lastCalDate = Convert.ToDateTime(clickedItem.SubItems[3].Text);
-                DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
-                string currentLoc = clickedItem.SubItems[5].Text;
-                string storageLoc = clickedItem.SubItems[6].Text;
-                string intervalAmt = clickedItem.SubItems[7].Text;
-                string intervalType = clickedItem.SubItems[8].Text;
-                string active = clickedItem.SubItems[9].Text;
-
-                // Create a new instance of the GageDetailsForm and pass the gage information
-                var gageDetailsForm = new ReviewGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc,intervalType, intervalAmt, active);
-                gageDetailsForm.Text = gageNumber + " - " + gageType;
-                // Display the GageDetailsForm
-                gageDetailsForm.ShowDialog();
-       
-               
-            }
-            else if (e.Button == MouseButtons.Left)
+             if (e.Button == MouseButtons.Left)
             {
                 var focusedItem = listView1.FocusedItem;
                 if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
@@ -129,6 +107,57 @@ namespace BasicGages
 
                 
         }
+
+        private void Delete_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void Edit_Click(object? sender, EventArgs e)
+        {
+            var clickedItem = listView1.SelectedItems[0];
+
+            // Retrieve the gage information from the clicked item
+            string gageNumber = clickedItem.Text;
+            string gageType = clickedItem.SubItems[1].Text;
+            string gageStatus = clickedItem.SubItems[2].Text;
+            DateTime lastCalDate = Convert.ToDateTime(clickedItem.SubItems[3].Text);
+            DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
+            string currentLoc = clickedItem.SubItems[5].Text;
+            string storageLoc = clickedItem.SubItems[6].Text;
+            string intervalAmt = clickedItem.SubItems[7].Text;
+            string intervalType = clickedItem.SubItems[8].Text;
+            string active = clickedItem.SubItems[9].Text;
+
+            EditGageForm editGage = new EditGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc, intervalType, intervalAmt, active);
+            editGage.ShowDialog();
+        }
+
+        private void View_Click(object? sender, EventArgs e)
+        {
+            var clickedItem = listView1.SelectedItems[0];
+
+            // Retrieve the gage information from the clicked item
+            string gageNumber = clickedItem.Text;
+            string gageType = clickedItem.SubItems[1].Text;
+            string gageStatus = clickedItem.SubItems[2].Text;
+            DateTime lastCalDate = Convert.ToDateTime(clickedItem.SubItems[3].Text);
+            DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
+            string currentLoc = clickedItem.SubItems[5].Text;
+            string storageLoc = clickedItem.SubItems[6].Text;
+            string intervalAmt = clickedItem.SubItems[7].Text;
+            string intervalType = clickedItem.SubItems[8].Text;
+            string active = clickedItem.SubItems[9].Text;
+
+
+            // Create a new instance of the GageDetailsForm and pass the gage information
+            var gageDetailsForm = new ReviewGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc, intervalType, intervalAmt, active);
+            gageDetailsForm.Text = gageNumber + " - " + gageType;
+            // Display the GageDetailsForm
+            gageDetailsForm.ShowDialog();
+           // throw new NotImplementedException();
+        }
+
+        
     }
     }
 
