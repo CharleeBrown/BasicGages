@@ -88,15 +88,6 @@ namespace BasicGages
             }
             else if (e.Button == MouseButtons.Left)
             {
-
-                // Create a new thread
-                Thread thread = new Thread(new ThreadStart(DoWork));
-
-                // Start the thread
-                thread.Start();
-            }
-        }
-        private void DoWork() { 
                 var clickedItem = listView1.SelectedItems[0];
 
                 // Retrieve the gage information from the clicked item
@@ -115,6 +106,12 @@ namespace BasicGages
                 // Display the GageDetailsForm
                 gageDetailsForm.ShowDialog();
             }
+     
+
+        private void delGageBtn_Click(object sender, EventArgs e)
+        {
+         //   listView1.SelectedItems[0].SubItems[1];
         }
+    }
     }
 

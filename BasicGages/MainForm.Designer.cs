@@ -61,7 +61,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -322,26 +321,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(215, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 147);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add Gage";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 483);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button1);
@@ -388,6 +372,5 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private Button button1;
         public ListView listView1;
-        private Button button2;
     }
 }
