@@ -5,7 +5,7 @@
 
         public AddGageForm()
         {
-            AddGageForm.ActiveForm.Text = "Test";
+            
             InitializeComponent();
             gageNumTxt.Focus();
         }
@@ -14,9 +14,7 @@
         {
            
             GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value, dueDateDTP.Value, currentLocTxt.Text, storageLocTxt.Text, activeTxt.Text);
-            ActiveForm.Close();
-
-
+            this.Close();
 
         }
 
@@ -46,5 +44,14 @@
             }
 
         }
+
+        private void AddGageForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainForm form = new MainForm();
+            ListView list = form.listView1;
+            GetData.LoadDataIntoListView(list);
+        }
+
+      
     }
 }

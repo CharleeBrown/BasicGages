@@ -230,7 +230,7 @@
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
-            // Form2
+            // AddGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,8 +255,9 @@
             this.Controls.Add(this.gageNumTxt);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.storageLocTxt);
-            this.Name = "Form2";
+            this.Name = "AddGageForm";
             this.Text = "New Gage";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddGageForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
