@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
+using System.Transactions;
 
 namespace BasicGages
 {
@@ -75,7 +76,7 @@ namespace BasicGages
 
                 // Setting up the commands
                 comms.Connection = conn;
-                comms.CommandText = "SELECT GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, IntervalAmt, IntervalType, isActive FROM GageTable";
+                comms.CommandText = "SELECT ID, GageNum, GageType, Status, LastCal, CalDueDate, CurrentLoc, StorageLoc, IntervalAmt, IntervalType, isActive FROM GageTable";
 
                 // Execute the SQL command and retrieve the data
                 using (SqlDataReader reader = comms.ExecuteReader())
@@ -84,7 +85,8 @@ namespace BasicGages
                     while (reader.Read())
                     {
                         // Create a new ListViewItem to hold the row data
-                        ListViewItem item = new ListViewItem(reader["GageNum"].ToString());
+                        ListViewItem item = new ListViewItem(reader["ID"].ToString());
+                        item.SubItems.Add(reader["GageNum"].ToString());
                         DateTime timerOne = Convert.ToDateTime(reader["lastCal"]);
                         DateTime timerTwo = Convert.ToDateTime(reader["CalDueDate"]);
                         // Add the remaining columns to the ListViewItem
@@ -163,6 +165,54 @@ namespace BasicGages
                 conn.Close();
             }
         }
+
+        public static void DeleteData(int ID, string GageNum, string GageType)
+        {
+            // Retrieving the connection string.
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    using (SqlCommand comms = new SqlCommand())
+                    {
+                        comms.Connection = conn;
+                        comms.Transaction = transaction;
+                        comms.Parameters.AddWithValue("@ID", ID);
+                        comms.Parameters.AddWithValue("@GageNum", GageNum);
+                        comms.Parameters.AddWithValue("@GageType", GageType);
+                        comms.CommandText = "DELETE FROM GageTable WHERE ID = @ID AND GageNum = @GageNum AND GageType = @GageType";
+                        comms.ExecuteNonQuery();
+                    }
+
+                 
+
+                    using (SqlCommand SaveDelete = new SqlCommand())
+                    {
+                        SaveDelete.Connection = conn;
+                        SaveDelete.Transaction = transaction;
+                        SaveDelete.Parameters.AddWithValue("@ID", ID);
+                        SaveDelete.Parameters.AddWithValue("@GageNumber", GageNum);
+                        SaveDelete.Parameters.AddWithValue("@GageType", GageType);
+                        SaveDelete.CommandText = $"INSERT INTO RemovedGageTable (DeletedID, GageNumber, GageType) VALUES (@ID, @GageNumber, @GageType)";
+                        SaveDelete.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                    MessageBox.Show("Gage Removed and saved to removed gage table!");
+                }
+                catch (Exception ex)
+                { 
+                    MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
+                    transaction.Rollback();
+                   
+                }
+            }
+        }
+
+
+
     }
 
 
