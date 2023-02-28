@@ -31,7 +31,6 @@
             this.storageLocTxt = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.gageNumTxt = new System.Windows.Forms.TextBox();
-            this.gageTypeTxt = new System.Windows.Forms.TextBox();
             this.statusTxt = new System.Windows.Forms.TextBox();
             this.activeTxt = new System.Windows.Forms.TextBox();
             this.currentLocTxt = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@
             this.intervalAmt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.intervalType = new System.Windows.Forms.ComboBox();
+            this.gageTypeTxt = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // storageLocTxt
@@ -74,14 +74,6 @@
             this.gageNumTxt.Name = "gageNumTxt";
             this.gageNumTxt.Size = new System.Drawing.Size(141, 27);
             this.gageNumTxt.TabIndex = 1;
-            // 
-            // gageTypeTxt
-            // 
-            this.gageTypeTxt.Location = new System.Drawing.Point(259, 52);
-            this.gageTypeTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gageTypeTxt.Name = "gageTypeTxt";
-            this.gageTypeTxt.Size = new System.Drawing.Size(141, 27);
-            this.gageTypeTxt.TabIndex = 2;
             // 
             // statusTxt
             // 
@@ -230,11 +222,20 @@
             this.intervalType.TabIndex = 6;
             this.intervalType.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
+            // gageTypeTxt
+            // 
+            this.gageTypeTxt.FormattingEnabled = true;
+            this.gageTypeTxt.Location = new System.Drawing.Point(260, 58);
+            this.gageTypeTxt.Name = "gageTypeTxt";
+            this.gageTypeTxt.Size = new System.Drawing.Size(137, 28);
+            this.gageTypeTxt.TabIndex = 23;
+            // 
             // AddGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 355);
+            this.Controls.Add(this.gageTypeTxt);
             this.Controls.Add(this.intervalType);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.intervalAmt);
@@ -251,7 +252,6 @@
             this.Controls.Add(this.statusTxt);
             this.Controls.Add(this.activeTxt);
             this.Controls.Add(this.currentLocTxt);
-            this.Controls.Add(this.gageTypeTxt);
             this.Controls.Add(this.gageNumTxt);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.storageLocTxt);
@@ -267,7 +267,6 @@
         private Button saveButton;
         private Label label1;
         private TextBox gageNumTxt;
-        private TextBox gageTypeTxt;
         private TextBox statusTxt;
         private TextBox activeTxt;
         private TextBox currentLocTxt;
@@ -285,5 +284,6 @@
         private TextBox intervalAmt;
         private Label label10;
         private ComboBox intervalType;
+        private ComboBox gageTypeTxt;
     }
 }

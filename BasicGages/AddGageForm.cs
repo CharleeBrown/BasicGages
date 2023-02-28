@@ -8,12 +8,18 @@
             
             InitializeComponent();
             gageNumTxt.Focus();
+            GageInfo gages = new GageInfo();
+
+            foreach(var item in gages.GageTypes())
+            {
+                gageTypeTxt.Items.Add(item);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
            // Saves the gage data.
-            GetData.SetData(gageNumTxt.Text, gageTypeTxt.Text, statusTxt.Text, lastCalDTP.Value, dueDateDTP.Value, currentLocTxt.Text, storageLocTxt.Text,intervalType.SelectedItem.ToString(), intervalAmt.Text, activeTxt.Text);
+            GetData.SetData(gageNumTxt.Text, gageTypeTxt.SelectedItem.ToString(), statusTxt.Text, lastCalDTP.Value, dueDateDTP.Value, currentLocTxt.Text, storageLocTxt.Text,intervalType.SelectedItem.ToString(), intervalAmt.Text, activeTxt.Text);
             this.Close();
 
         }
