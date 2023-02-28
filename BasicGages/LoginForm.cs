@@ -16,5 +16,17 @@ namespace BasicGages
         {
             InitializeComponent();
         }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            Users newUser = new Users();
+
+            newUser.SetUser(createUserTxt.Text, createVerifyPass.Text);
+
+            MainForm form = new MainForm();
+            LoginForm.ActiveForm.Close();
+            form.ShowDialog();
+            
+        }
     }
 }
