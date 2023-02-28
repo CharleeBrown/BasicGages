@@ -21,12 +21,17 @@ namespace BasicGages
         {
             Users newUser = new Users();
 
-            newUser.SetUser(createUserTxt.Text, createVerifyPass.Text);
+            newUser.SetUser(createUserTxt.Text, createVerifyPass.Text, this);
 
-            MainForm form = new MainForm();
-            LoginForm.ActiveForm.Close();
-            form.ShowDialog();
-            
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {            
+            Users loginUser = new Users();
+
+            loginUser.LoginUser(userLoginBox.Text, loginPassBox.Text, this);
+        
+
         }
     }
 }

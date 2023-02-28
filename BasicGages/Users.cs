@@ -16,7 +16,7 @@ namespace BasicGages
         private string _main = "";
 
 
-        public void SetUser(string userName, string password)
+        public void SetUser(string userName, string password, Form form)
         {
             SHA256 sHA256 = SHA256.Create();
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
@@ -62,12 +62,16 @@ namespace BasicGages
                 }
             }
 
-         
 
+            MessageBox.Show("Logged In!");
+            form.Close();
+            //LoginForm.ActiveForm.Close();
+            MainForm main = new MainForm();
+            main.ShowDialog();
         }
       
 
-        public void LoginUser(string userName, string password)
+        public void LoginUser(string userName, string password, Form form)
         {
               
         SHA256 sHA256 = SHA256.Create();
@@ -85,13 +89,14 @@ namespace BasicGages
 
             using (conn)
             {
-                SqlTransaction transaction = transaction = conn.BeginTransaction();
+                SqlTransaction transaction = null;
+
                 try
                 {
                     // Open the connection
 
                     conn.Open();
-
+                    transaction = conn.BeginTransaction();
                     // Setting up the commands
                     comms.Connection = conn;
                     comms.Transaction = transaction;
@@ -120,10 +125,15 @@ namespace BasicGages
                     conn.Close();
                 }
             }
-            if (userName == _user  && hashedPassword == _main)
+            if (userName != _user && hashedPassword != _main)
             {
+                MessageBox.Show("Incorrect Credentials");
+                
+            }
+            else { 
                 MessageBox.Show("Logged In!");
-                LoginForm.ActiveForm.Close();
+                //LoginForm.ActiveForm.Close();
+                form.Close();
                 MainForm main = new MainForm();
                 main.ShowDialog();
           

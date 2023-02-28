@@ -157,16 +157,16 @@ namespace BasicGages
             var clickedItem = listView1.SelectedItems[0];
 
             // Retrieve the gage information from the clicked item
-            string gageNumber = clickedItem.Text;
-            string gageType = clickedItem.SubItems[1].Text;
-            string gageStatus = clickedItem.SubItems[2].Text;
-            DateTime lastCalDate = Convert.ToDateTime(clickedItem.SubItems[3].Text);
-            DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
-            string currentLoc = clickedItem.SubItems[5].Text;
-            string storageLoc = clickedItem.SubItems[6].Text;
-            string intervalType = clickedItem.SubItems[7].Text;
-            string intervalAmt = clickedItem.SubItems[8].Text;
-            string active = clickedItem.SubItems[9].Text;
+            string gageNumber = clickedItem.SubItems[1].Text;
+            string gageType = clickedItem.SubItems[2].Text;
+            string gageStatus = clickedItem.SubItems[3].Text;
+            DateTime lastCalDate = Convert.ToDateTime(clickedItem.SubItems[4].Text);
+            DateTime dueDate = Convert.ToDateTime(clickedItem.SubItems[5].Text);
+            string currentLoc = clickedItem.SubItems[6].Text;
+            string storageLoc = clickedItem.SubItems[7].Text;
+            string intervalType = clickedItem.SubItems[8].Text;
+            string intervalAmt = clickedItem.SubItems[9].Text;
+            string active = clickedItem.SubItems[10].Text;
 
 
             // Create a new instance of the GageDetailsForm and pass the gage information
