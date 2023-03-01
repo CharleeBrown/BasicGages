@@ -117,18 +117,23 @@ namespace BasicGages
         }
 
         public static void UpdateData(int ID, string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string intervalType, string intervalAmt, string active)
+        
         {
+            MessageBox.Show(Convert.ToString(ID));
             // Retrieving the connection string.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
+            using (conn)
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
 
-            //  DateTime myDateTime = DateTime.Now;
-            /*           string lastCalFormatted = lastCal.ToString("MM-dd-yyyy");
-                       string dueDateFormatted = dueDate.ToString("MM-dd-yyyy");*/
-            // Setup for the SQL Commands
-            SqlCommand comms = new SqlCommand();
+                // Setup for the SQL Commands
+                SqlCommand comms = new SqlCommand();
             comms.Connection = conn;
-
+            comms.Transaction = transaction;
+       
+            comms.Parameters.AddWithValue("@ID", ID);
             comms.Parameters.AddWithValue("@GageNum", GageNum);
             comms.Parameters.AddWithValue("@GageType", GageType);
             comms.Parameters.AddWithValue("@status", status);
@@ -140,16 +145,28 @@ namespace BasicGages
             comms.Parameters.AddWithValue("@intervalAmt", intervalAmt);
             comms.Parameters.AddWithValue("@active", active);
 
-            comms.CommandText = "UPDATE GageTable ) ";
+            comms.CommandText = "UPDATE GageTable " +
+                    " SET GageNum = @GageNum, " +
+                    "GageType = @GageType, " +
+                    "Status = @Status, " +
+                    "LastCal = @lastCal, " +
+                    "CalDueDate = @dueDate, " +
+                    "CurrentLoc = @currentLocation, " +
+                    "StorageLoc = @storageLocation, " +
+                    "isActive = @active, " +
+                    "intervalAmt = @intervalAmt, " +
+                    "intervalType = @intervalType " +
+                    "WHERE Id = @ID ";
 
-
-            using (conn)
-            {
-                conn.Open();
                 try
                 {
+                    
                     // Opening the connection and executing the query with the connection.
+
+
                     comms.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Data Saved");
                 }
                 catch (Exception ex)
                 {
@@ -159,10 +176,10 @@ namespace BasicGages
                 finally
                 {
                     // Committing the query and notifying the user.
-                    MessageBox.Show("Data Saved");
+                    conn.Close();
                 }
                 // Closing the connection.
-                conn.Close();
+               
             }
         }
 
@@ -207,6 +224,51 @@ namespace BasicGages
                     MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
                     transaction.Rollback();
                    
+                }
+            }
+        }
+
+        public static void ModifySave(int ID, string OldGageNum, , string GageType)
+        {
+            // Retrieving the connection string.
+            string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    using (SqlCommand comms = new SqlCommand())
+                    {
+                        comms.Connection = conn;
+                        comms.Transaction = transaction;
+                        comms.Parameters.AddWithValue("@ID", ID);
+                        comms.Parameters.AddWithValue("@GageNum", GageNum);
+                        comms.Parameters.AddWithValue("@GageType", GageType);
+                        comms.CommandText = "DELETE FROM GageTable WHERE ID = @ID AND GageNum = @GageNum AND GageType = @GageType";
+                        comms.ExecuteNonQuery();
+                    }
+
+
+
+                    using (SqlCommand SaveDelete = new SqlCommand())
+                    {
+                        SaveDelete.Connection = conn;
+                        SaveDelete.Transaction = transaction;
+                        SaveDelete.Parameters.AddWithValue("@ID", ID);
+                        SaveDelete.Parameters.AddWithValue("@GageNumber", GageNum);
+                        SaveDelete.Parameters.AddWithValue("@GageType", GageType);
+                        SaveDelete.CommandText = $"INSERT INTO RemovedGageTable (DeletedID, GageNumber, GageType) VALUES (@ID, @GageNumber, @GageType)";
+                        SaveDelete.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                    MessageBox.Show("Gage Removed and saved to removed gage table!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + " " + ex.StackTrace + " " + ex.Source);
+                    transaction.Rollback();
+
                 }
             }
         }

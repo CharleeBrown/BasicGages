@@ -148,7 +148,7 @@ namespace BasicGages
             string intervalAmt = clickedItem.SubItems[9].Text;
             string active = clickedItem.SubItems[10].Text;
 
-            EditGageForm editGage = new EditGageForm(gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc, intervalType, intervalAmt, active);
+            EditGageForm editGage = new EditGageForm(Convert.ToInt32(ID),gageNumber, gageType, gageStatus, lastCalDate, dueDate, currentLoc, storageLoc, intervalType, intervalAmt, active);
             editGage.ShowDialog();
         }
 

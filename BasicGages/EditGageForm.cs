@@ -15,6 +15,7 @@ namespace BasicGages
 {
     public partial class EditGageForm : Form
     {
+        private int ID;
         private string gageNum;
         private string gageType;
         private string status;
@@ -26,9 +27,10 @@ namespace BasicGages
         private string intervalAmt;
         private string active;
         private int gageSerialNumber;
-        public EditGageForm(string gageNumber, string gageType, string gageStatus, DateTime lastCal, DateTime dueDate, string currentLoc, string storageLoc, string intervalType, string intervalAmt, string active)
+        public EditGageForm(int ID, string gageNumber, string gageType, string gageStatus, DateTime lastCal, DateTime dueDate, string currentLoc, string storageLoc, string intervalType, string intervalAmt, string active)
         {
             InitializeComponent();
+            this.ID = ID;
             this.gageNum = gageNumber;
             this.gageType = gageType;
             this.status = gageStatus;
@@ -55,8 +57,13 @@ namespace BasicGages
             storageLocEdit.Text = storageLoc;
             intervalTypeEdit.Text = intervalType;
             intervalEdit.Text = intervalAmt;
-
+            
             //serialNumberLabel.Text = gageSerialNumber.ToString();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            GetData.UpdateData(ID, gageNumEdit.Text, gageTypeEdit.Text, statusEdit.Text, lastCalDTP_Edit.Value, dueDateDTP_Edit.Value, currentLocEdit.Text, storageLocEdit.Text, intervalTypeEdit.Text, intervalEdit.Text, activeEdit.Text);
         }
     }
 }
