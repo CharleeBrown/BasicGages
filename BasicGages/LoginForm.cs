@@ -30,7 +30,6 @@ namespace BasicGages
             Users loginUser = new Users();
 
             loginUser.LoginUser(userLoginBox.Text, loginPassBox.Text, this);
-        
 
         }
     }
