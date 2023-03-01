@@ -68,9 +68,9 @@
             // 
             this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.HoverSelection = true;
-            this.listView1.Location = new System.Drawing.Point(66, 215);
+            this.listView1.Location = new System.Drawing.Point(66, 148);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(978, 239);
+            this.listView1.Size = new System.Drawing.Size(978, 306);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -314,7 +314,7 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(66, 31);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 147);
+            this.button1.Size = new System.Drawing.Size(115, 111);
             this.button1.TabIndex = 3;
             this.button1.Text = "Add Gage";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

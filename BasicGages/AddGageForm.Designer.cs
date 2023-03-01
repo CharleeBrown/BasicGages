@@ -47,7 +47,7 @@
             this.intervalAmt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.intervalType = new System.Windows.Forms.ComboBox();
-            this.gageTypeTxt = new System.Windows.Forms.ComboBox();
+            this.gageTypeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // storageLocTxt
@@ -222,20 +222,20 @@
             this.intervalType.TabIndex = 6;
             this.intervalType.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
-            // gageTypeTxt
+            // gageTypeBox
             // 
-            this.gageTypeTxt.FormattingEnabled = true;
-            this.gageTypeTxt.Location = new System.Drawing.Point(260, 58);
-            this.gageTypeTxt.Name = "gageTypeTxt";
-            this.gageTypeTxt.Size = new System.Drawing.Size(137, 28);
-            this.gageTypeTxt.TabIndex = 23;
+            this.gageTypeBox.FormattingEnabled = true;
+            this.gageTypeBox.Location = new System.Drawing.Point(259, 51);
+            this.gageTypeBox.Name = "gageTypeBox";
+            this.gageTypeBox.Size = new System.Drawing.Size(137, 28);
+            this.gageTypeBox.TabIndex = 23;
             // 
             // AddGageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 355);
-            this.Controls.Add(this.gageTypeTxt);
+            this.Controls.Add(this.gageTypeBox);
             this.Controls.Add(this.intervalType);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.intervalAmt);
@@ -284,6 +284,6 @@
         private TextBox intervalAmt;
         private Label label10;
         private ComboBox intervalType;
-        private ComboBox gageTypeTxt;
+        private ComboBox gageTypeBox;
     }
 }
