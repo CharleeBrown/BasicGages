@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Drawing.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BasicGages
 {
@@ -73,14 +74,12 @@ namespace BasicGages
 
         public void LoginUser(string userName, string password, Form form)
         {
-              
-        SHA256 sHA256 = SHA256.Create();
+            
+            // Hashing the password input by the user.
+            SHA256 sHA256 = SHA256.Create();
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] hashedPasswordBytes = sHA256.ComputeHash(passwordBytes);
             string hashedPassword = BitConverter.ToString(hashedPasswordBytes).Replace("-", "");
-
-            
-
 
             // Connection informatino for the database.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
@@ -101,47 +100,40 @@ namespace BasicGages
                     comms.Connection = conn;
                     comms.Transaction = transaction;
                     comms.Parameters.AddWithValue("@user", userName);
-                    comms.Parameters.AddWithValue("@pass", hashedPassword);
-                    comms.CommandText = "SELECT * FROM Users WHERE Username = @user and mainHash = @pass";
+                    
+                    // Grabbing information to compare by username
+                    comms.CommandText = "SELECT * FROM Users WHERE Username = @user";
 
-
+                    //
                     SqlDataReader reader =  comms.ExecuteReader();
                     while (reader.Read())
                     {
                         _user = reader["Username"].ToString();
                         _main = reader["mainHash"].ToString();
-
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message + " " + ex.Source);
-
                 }
                 finally
                 {
                     conn.Close();
                 }
             }
-            if (userName != _user && hashedPassword != _main)
+            if (String.IsNullOrEmpty(userName)|| String.IsNullOrEmpty(hashedPassword) && userName!= _user || hashedPassword != _main)
             {
                 MessageBox.Show("Incorrect Credentials");
-                
             }
             else { 
                 MessageBox.Show("Logged In!");
-                //LoginForm.ActiveForm.Close();
+
+                var th = new Thread(() => Application.Run(new MainForm()));
+                th.SetApartmentState(ApartmentState.STA); // Deprecation Fix
+                th.Start();
+
                 form.Close();
-                MainForm main = new MainForm();
-                main.ShowDialog();
-          
-
             }
-
-
-
         }
     }
 }
