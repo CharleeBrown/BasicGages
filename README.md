@@ -1,4 +1,8 @@
-# BasicGages
-## Is an open-source Gage management system.
+# BasicGages - an open-source Gage management system.
 -------
-It currently has basic entry functions, but I will be adding History, Removal and actual user logging.
+### It currently has the following functionality 
+* Adding Gages
+* Removing Gages
+* Create User/Login
+* Delete History
+
