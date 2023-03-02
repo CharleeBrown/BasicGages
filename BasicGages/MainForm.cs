@@ -177,7 +177,10 @@ namespace BasicGages
            // throw new NotImplementedException();
         }
 
-        
+        private void MainForm_Activated_1(object sender, EventArgs e)
+        {
+            GetData.LoadDataIntoListView(listView1);
+        }
     }
     }
 

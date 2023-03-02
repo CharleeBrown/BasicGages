@@ -9,20 +9,12 @@ namespace BasicGages
 {
     internal class GageInfo
     {
-        private List<string> _gages= new List<string>();
-        public List<string> GageTypes() {
-
-
-            string[] gageList = { "Calipers", "Plug", "Ring", "Taper", "Snap", "Feeler", "Thread", "Form" };
-            
-            foreach(var item in gageList)
-            {
-                _gages.Add(item.ToString());
-            }
-
-
-
-            return _gages;
+        private string[] gageList = { "Calipers", "Plug", "Ring", "Taper", "Snap", "Feeler", "Thread", "Form" };
+        //private List<string> _gages= new List<string>();
+        public List<string> GageTypes()
+        {
+            return gageList.Select(item => item.ToString()).ToList();
         }
+    
     }
 }

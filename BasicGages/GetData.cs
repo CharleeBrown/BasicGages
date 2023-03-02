@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Configuration;
+using System.Runtime.CompilerServices;
 using System.Transactions;
 
 namespace BasicGages
@@ -116,10 +117,10 @@ namespace BasicGages
 
         }
 
-        public static void UpdateData(int ID, string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string intervalType, string intervalAmt, string active)
+        public static void UpdateData(int ID, string GageNum, string GageType, string status, DateTime lastCal, DateTime dueDate, string currentLocation, string storageLocation, string intervalType, string intervalAmt, string active, ListView list)
         
         {
-            MessageBox.Show(Convert.ToString(ID));
+            
             // Retrieving the connection string.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
@@ -167,6 +168,9 @@ namespace BasicGages
                     comms.ExecuteNonQuery();
                     transaction.Commit();
                     MessageBox.Show("Data Saved");
+                    LoadDataIntoListView(list);
+                    list.Refresh();
+                    
                 }
                 catch (Exception ex)
                 {
@@ -228,7 +232,7 @@ namespace BasicGages
             }
         }
 
-        public static void ModifySave(int ID, string OldGageNum, , string GageType)
+        /*public static void ModifySave(int ID, string OldGageNum,  string GageType)
         {
             // Retrieving the connection string.
             string connectionString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
@@ -272,7 +276,7 @@ namespace BasicGages
                 }
             }
         }
-
+*/
 
 
     }

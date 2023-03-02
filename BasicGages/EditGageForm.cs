@@ -62,8 +62,11 @@ namespace BasicGages
         }
 
         private void saveButton_Click(object sender, EventArgs e)
+
         {
-            GetData.UpdateData(ID, gageNumEdit.Text, gageTypeEdit.Text, statusEdit.Text, lastCalDTP_Edit.Value, dueDateDTP_Edit.Value, currentLocEdit.Text, storageLocEdit.Text, intervalTypeEdit.Text, intervalEdit.Text, activeEdit.Text);
+            MainForm form = new MainForm();
+            GetData.UpdateData(ID, gageNumEdit.Text, gageTypeEdit.Text, statusEdit.Text, lastCalDTP_Edit.Value, dueDateDTP_Edit.Value, currentLocEdit.Text, storageLocEdit.Text, intervalTypeEdit.Text, intervalEdit.Text, activeEdit.Text, form.listView1);
+            this.Close();
         }
     }
 }
