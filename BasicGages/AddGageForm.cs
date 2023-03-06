@@ -7,9 +7,12 @@
         {
             
             InitializeComponent();
+
+            // Focuses the "Gage Number" box initially.
             gageNumTxt.Focus();
             GageInfo gages = new GageInfo();
-
+            
+            // Fills in the gage types from the GageInfo class.
             foreach(var item in gages.GageTypes())
             {
                 gageTypeBox.Items.Add(item);
